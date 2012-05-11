@@ -12,11 +12,20 @@
 
 @interface PlacesTableViewController ()
 
+// model is a list Country Classes.  Each of these has the country name (corresponds to one
+// section in the table view) and an ordered list of cities.
+@property (nonatomic, strong) NSArray * placesList;
 @end
+
+
+
+
+
+
 
 @implementation PlacesTableViewController
 
-@synthesize places = _places;
+@synthesize placesList = _places;
 
 - (void)setPlaces:(NSArray *)places
 {
@@ -156,7 +165,7 @@
         NSArray * newPlaces = [FlickrFetcher topPlaces];
         NSArray * parsedPlaces = [PlacesTableViewController parseAndSortFlickrPlaces:newPlaces];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.places = parsedPlaces;
+            self.placesList = parsedPlaces;
         });
     });
     dispatch_release(fetchQueue);
@@ -169,19 +178,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.places count];
+    return [self.placesList count];
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [[self.places objectAtIndex:section] countryName];
+    return [[self.placesList objectAtIndex:section] countryName];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    CountryList * thisCountry = [self.places objectAtIndex:section];
+    CountryList * thisCountry = [self.placesList objectAtIndex:section];
     return [thisCountry.cities count];
 }
 
@@ -190,7 +199,7 @@
     static NSString *CellIdentifier = @"CityCellPrototype";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-    CountryList * thisCountry = [self.places objectAtIndex:indexPath.section];
+    CountryList * thisCountry = [self.placesList objectAtIndex:indexPath.section];
     NSArray * cityList = thisCountry.cities;
     NSDictionary * thisCityState = [cityList objectAtIndex:indexPath.row];
     cell.textLabel.text = [thisCityState valueForKey:FLICKR_DICT_KEY_CITY];
