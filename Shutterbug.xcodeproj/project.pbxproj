@@ -18,6 +18,7 @@
 		865DACE6155C8176007D5F59 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE4155C8176007D5F59 /* FlickrFetcher.m */; };
 		865DACE9155C8265007D5F59 /* PlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE8155C8265007D5F59 /* PlacesTableViewController.m */; };
 		865DACEC155C831B007D5F59 /* PhotoHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */; };
+		86BEECB7155DB4A6008C2165 /* CountryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BEECB6155DB4A6008C2165 /* CountryList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		865DACE8155C8265007D5F59 /* PlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesTableViewController.m; sourceTree = "<group>"; };
 		865DACEA155C831B007D5F59 /* PhotoHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHistoryTableViewController.h; sourceTree = "<group>"; };
 		865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHistoryTableViewController.m; sourceTree = "<group>"; };
+		86BEECB5155DB4A6008C2165 /* CountryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryList.h; sourceTree = "<group>"; };
+		86BEECB6155DB4A6008C2165 /* CountryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				865DACD5155C807F007D5F59 /* iPhone.storyboard */,
 				865DACE7155C8265007D5F59 /* PlacesTableViewController.h */,
 				865DACE8155C8265007D5F59 /* PlacesTableViewController.m */,
+				86BEECB5155DB4A6008C2165 /* CountryList.h */,
+				86BEECB6155DB4A6008C2165 /* CountryList.m */,
 				865DACEA155C831B007D5F59 /* PhotoHistoryTableViewController.h */,
 				865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */,
 				865DACE3155C8176007D5F59 /* FlickrFetcher.h */,
@@ -182,6 +187,7 @@
 				865DACE6155C8176007D5F59 /* FlickrFetcher.m in Sources */,
 				865DACE9155C8265007D5F59 /* PlacesTableViewController.m in Sources */,
 				865DACEC155C831B007D5F59 /* PhotoHistoryTableViewController.m in Sources */,
+				86BEECB7155DB4A6008C2165 /* CountryList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

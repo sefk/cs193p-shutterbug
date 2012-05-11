@@ -10,6 +10,9 @@
 
 @interface PlacesTableViewController : UITableViewController
 
+
+// model is a list of lists
+// first list - CountryLists
 @property (nonatomic, strong) NSArray * places;
 
 @end
