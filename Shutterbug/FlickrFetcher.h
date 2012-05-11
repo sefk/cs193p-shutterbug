@@ -1,5 +1,7 @@
 //
 //  FlickrFetcher.h
+//  
+//  Code provided by CS193P teachers, unmodified by me.
 //
 //  Created for Stanford CS193p Fall 2011.
 //  Copyright 2011 Stanford University. All rights reserved.

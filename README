@@ -1,6 +1,11 @@
 Application #4 for CS193P (Fall 2011) taught by Paul Hegarty.  Don't
 try to use for anything useful.  Not well tested.
 
+I don't want to upload my actual Flickr key, so instead 
+    cd Shutterbug
+    mv FlickrAPIKey-placeholder.h FlickrAPIKey.h
+    vi FlickrAPIKey.h   # add yours
+
 For more info, see http://cs193p.stanford.edu/
 
 - Sef Kloninger
