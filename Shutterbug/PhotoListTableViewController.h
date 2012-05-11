@@ -10,4 +10,8 @@
 
 @interface PhotoListTableViewController : UITableViewController
 
+- (NSArray *) getPhotoListFromHistory:(id)ignorable;
+
+- (NSArray *) getPhotoListFromFlickrForPlace:(NSDictionary *)place;
+
 @end

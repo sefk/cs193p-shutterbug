@@ -20,27 +20,22 @@
 
 
 
-
-
-
 @implementation PlacesTableViewController
 
-@synthesize placesList = _places;
+@synthesize placesList = _placesList;
 
-- (void)setPlaces:(NSArray *)places
+- (void)setPlacesList:(NSArray *)newPlacesList
 {
-    if (places != _places) {
-        _places = places;
+    if (newPlacesList != _placesList) {
+        _placesList = newPlacesList;
         [self.tableView reloadData];        
     }
 }
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // special setup here
     }
     return self;
 }
@@ -48,15 +43,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self getTopPlaces];  // populate view w/ data from flickr
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self getTopPlaces];    // populate view w/ data from Flickr
+}
+
 
 - (void)viewDidUnload
 {
@@ -73,10 +67,6 @@
 
 #pragma mark - Get Data For View
 
-#define FLICKR_DICT_KEY_CITY    @"_content.city"
-#define FLICKR_DICT_KEY_STATE   @"_content.state"
-#define FLICKR_DICT_KEY_COUNTRY @"_content.country"
-#define UNKNOWN_STRING          @"Unknown"
 
 + (NSArray *)parseAndSortFlickrPlaces:(NSArray *)fromFlickr
 {
@@ -109,14 +99,12 @@
                 [thisEntry setValue:[locationParts objectAtIndex:2] forKey:FLICKR_DICT_KEY_COUNTRY];
         }
         
-        
         [listParsedAndSorted addObject:thisEntry];
     }];
      
     // now sort by country, city, state (in that order)
-    [listParsedAndSorted sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+    [listParsedAndSorted sortUsingComparator:^NSComparisonResult(id obj1, id obj2){
         NSComparisonResult result;
-        
         assert([obj1 isKindOfClass:[NSDictionary class]]);
         NSDictionary * dict1 = obj1;
         assert([obj2 isKindOfClass:[NSDictionary class]]);
@@ -162,10 +150,19 @@
 {
     dispatch_queue_t fetchQueue = dispatch_queue_create("fetch queue", NULL);
     dispatch_async(fetchQueue, ^{
+        
+        // Asynch go off and get place list from Flickr
         NSArray * newPlaces = [FlickrFetcher topPlaces];
+        // Parse into cities and countries.  Also sort and put into section
+        // based structrure.  Probably doesn't take too long but nice to do
+        // in non-UI thread while we can
         NSArray * parsedPlaces = [PlacesTableViewController parseAndSortFlickrPlaces:newPlaces];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // update TableListView in the main UI thread.
             self.placesList = parsedPlaces;
+            
         });
     });
     dispatch_release(fetchQueue);

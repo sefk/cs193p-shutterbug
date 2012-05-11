@@ -7,12 +7,31 @@
 //
 
 #import "PhotoListTableViewController.h"
+#import "FlickrFetcher.h"
 
 @interface PhotoListTableViewController ()
 
+@property (nonatomic, strong) NSArray * photoList;
+
 @end
 
+
+
+
 @implementation PhotoListTableViewController
+
+
+@synthesize photoList = _photoList;
+
+- (void) setPhotoList:(NSArray *)newPhotoList
+{
+    if (newPhotoList != _photoList) {
+        _photoList = newPhotoList;
+        [self.tableView reloadData];
+    }
+}
+
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,8 +54,43 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
+
+
+#pragma mark - Data Fetch Methods
+
+
+- (NSArray *) getPhotoListFromHistory:(id)ignorable
+{
+    // TODO
+}
+
+
++ (NSArray *) parsePhotoList:(NSArray *)rawPhotoList
+{
+    // TODO
+}
+
+#define MAX_PHOTOS_FOR_PLACE 50
+
+- (NSArray *) getPhotoListFromFlickrForPlace:(NSDictionary *)place
+{
+    dispatch_queue_t fetchQueue = dispatch_queue_create("fetch queue", NULL);
+    dispatch_async(fetchQueue, ^{
+        NSArray * newPhotos = [FlickrFetcher photosInPlace:place maxResults:MAX_PHOTOS_FOR_PLACE];
+        NSArray * parsedPhotos = [PhotoListTableViewController parsePhotoList:newPhotos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.photoList = parsedPhotos;
+        });
+    });
+    dispatch_release(fetchQueue);
+}
+
+
+
+
+
 
 #pragma mark - Table view data source
 
