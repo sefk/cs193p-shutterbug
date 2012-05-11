@@ -1,18 +1,18 @@
 //
-//  PhotoHistoryTableViewController.m
+//  PhotoListTableViewController.m
 //  Shutterbug
 //
-//  Created by Sef Kloninger on 5/10/12.
+//  Created by Sef Kloninger on 5/11/12.
 //  Copyright (c) 2012 Peek 222 Software. All rights reserved.
 //
 
-#import "PhotoHistoryTableViewController.h"
+#import "PhotoListTableViewController.h"
 
-@interface PhotoHistoryTableViewController ()
+@interface PhotoListTableViewController ()
 
 @end
 
-@implementation PhotoHistoryTableViewController
+@implementation PhotoListTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,26 +26,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 #pragma mark - Table view data source
 

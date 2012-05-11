@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Shutterbug/PlacesTableViewController.m"
-         timestampString = "358465489.140731"
+         timestampString = "358467480.037707"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "149"
-         endingLineNumber = "149"
+         startingLineNumber = "147"
+         endingLineNumber = "147"
          landmarkName = "+parseAndSortFlickrPlaces:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Shutterbug/PlacesTableViewController.m"
-         timestampString = "358466372.488975"
+         timestampString = "358467480.037707"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "143"
-         endingLineNumber = "143"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "+parseAndSortFlickrPlaces:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -58,13 +58,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 
 #pragma mark - Get Data For View
-
-
 
 #define FLICKR_DICT_KEY_CITY    @"_content.city"
 #define FLICKR_DICT_KEY_STATE   @"_content.state"
@@ -85,7 +83,7 @@
         [thisEntry setValue:UNKNOWN_STRING forKey:FLICKR_DICT_KEY_STATE];
         [thisEntry setValue:UNKNOWN_STRING forKey:FLICKR_DICT_KEY_COUNTRY];
         
-        NSArray * locationParts = [[thisEntry objectForKey:@"_content"] componentsSeparatedByString:@","];
+        NSArray * locationParts = [[thisEntry objectForKey:@"_content"] componentsSeparatedByString:@", "];
         switch ([locationParts count]) {
             case 0:    // shouldn't happen, if no commas, resulting list should have one entry
                 break;
@@ -126,7 +124,7 @@
         return result;        
     }];
     
-    // split into array of arrays
+    // split into list of countries (sections) that each has a list of cities
     __block NSString * priorCountry = nil; // figure out if new
     __block CountryList * workingCountryList = [[CountryList alloc] init];
     
@@ -189,7 +187,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PhotoCell";
+    static NSString *CellIdentifier = @"CityCellPrototype";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     CountryList * thisCountry = [self.places objectAtIndex:indexPath.section];
@@ -206,13 +204,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+
 }
 
 

@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="PhotoCell" textLabel="IsH-0i-9Ns" detailTextLabel="TwL-PY-OuS" style="IBUITableViewCellStyleSubtitle" id="MUO-bb-XeJ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CityCellPrototype" textLabel="IsH-0i-9Ns" detailTextLabel="TwL-PY-OuS" style="IBUITableViewCellStyleSubtitle" id="MUO-bb-XeJ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -66,9 +66,85 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Places" id="Vko-Pk-0Pl"/>
+                    <connections>
+                        <segue destination="Jac-SH-M9J" kind="push" identifier="ShowPhotoList" id="SuH-n2-9Ya"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="430" y="-252"/>
+        </scene>
+        <!--Photo List Table View Controller-->
+        <scene sceneID="ccf-ks-OGG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWV-EU-9py" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Jac-SH-M9J" customClass="PhotoListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CQp-Q1-0Cd">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotoCellPrototype" textLabel="Myw-RB-4D1" detailTextLabel="RBr-aQ-1Mk" style="IBUITableViewCellStyleSubtitle" id="RRM-wb-4fy">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Myw-RB-4D1">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RBr-aQ-1Mk">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Jac-SH-M9J" id="ohu-Pb-1Pw"/>
+                            <outlet property="delegate" destination="Jac-SH-M9J" id="5DL-CA-bKk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="HUt-Lg-1Bo"/>
+                    <connections>
+                        <segue destination="dfz-WQ-aCC" kind="push" identifier="ShowPhoto" id="8sM-sh-1eF"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="992" y="31"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="ehH-W9-1DE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlg-1q-E14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="dfz-WQ-aCC" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UOa-MQ-yzv">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="re4-Uh-ew9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CZS-Vf-hHd"/>
+                    <connections>
+                        <outlet property="view" destination="re4-Uh-ew9" id="Qab-bp-TiY"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1545" y="31"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rOy-oY-wNK">
@@ -90,14 +166,6 @@
             <point key="canvasLocation" x="-104" y="31"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="PhotoHistoryTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoHistoryTableViewController.h"/>
-        </class>
-        <class className="PlacesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

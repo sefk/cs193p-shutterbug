@@ -19,6 +19,8 @@
 		865DACE9155C8265007D5F59 /* PlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE8155C8265007D5F59 /* PlacesTableViewController.m */; };
 		865DACEC155C831B007D5F59 /* PhotoHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */; };
 		86BEECB7155DB4A6008C2165 /* CountryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BEECB6155DB4A6008C2165 /* CountryList.m */; };
+		86D8C964155DCA9B005C7177 /* PhotoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8C963155DCA9B005C7177 /* PhotoListTableViewController.m */; };
+		86D8C968155DCAEB005C7177 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8C967155DCAEB005C7177 /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,10 @@
 		865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHistoryTableViewController.m; sourceTree = "<group>"; };
 		86BEECB5155DB4A6008C2165 /* CountryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryList.h; sourceTree = "<group>"; };
 		86BEECB6155DB4A6008C2165 /* CountryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryList.m; sourceTree = "<group>"; };
+		86D8C962155DCA9B005C7177 /* PhotoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListTableViewController.h; sourceTree = "<group>"; };
+		86D8C963155DCA9B005C7177 /* PhotoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListTableViewController.m; sourceTree = "<group>"; };
+		86D8C966155DCAEB005C7177 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		86D8C967155DCAEB005C7177 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				865DACD5155C807F007D5F59 /* iPhone.storyboard */,
+				86D8C966155DCAEB005C7177 /* PhotoViewController.h */,
+				86D8C967155DCAEB005C7177 /* PhotoViewController.m */,
+				86D8C962155DCA9B005C7177 /* PhotoListTableViewController.h */,
+				86D8C963155DCA9B005C7177 /* PhotoListTableViewController.m */,
 				865DACE7155C8265007D5F59 /* PlacesTableViewController.h */,
 				865DACE8155C8265007D5F59 /* PlacesTableViewController.m */,
 				86BEECB5155DB4A6008C2165 /* CountryList.h */,
@@ -188,6 +198,8 @@
 				865DACE9155C8265007D5F59 /* PlacesTableViewController.m in Sources */,
 				865DACEC155C831B007D5F59 /* PhotoHistoryTableViewController.m in Sources */,
 				86BEECB7155DB4A6008C2165 /* CountryList.m in Sources */,
+				86D8C964155DCA9B005C7177 /* PhotoListTableViewController.m in Sources */,
+				86D8C968155DCAEB005C7177 /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
