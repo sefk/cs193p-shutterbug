@@ -48,7 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self getTopPlaces];    // populate view w/ data from Flickr
+    [self getTopPlaces:self.navigationItem.rightBarButtonItem];    // populate view w/ data from Flickr
 }
 
 
@@ -146,8 +146,15 @@
 
 
 
-- (void) getTopPlaces
+- (IBAction)getTopPlaces:(id)sender
 {
+    // replace refresh button with spinner
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    UIBarButtonItem * spinnerButton = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    spinnerButton.style = UIBarButtonItemStyleBordered;
+    self.navigationItem.rightBarButtonItem = spinnerButton; 
+    
     dispatch_queue_t fetchQueue = dispatch_queue_create("fetch queue", NULL);
     dispatch_async(fetchQueue, ^{
         
@@ -158,11 +165,12 @@
         // in non-UI thread while we can
         NSArray * parsedPlaces = [PlacesTableViewController parseAndSortFlickrPlaces:newPlaces];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
+        dispatch_async(dispatch_get_main_queue(), ^{            
             // update TableListView in the main UI thread.
             self.placesList = parsedPlaces;
-            
+            // restore refresh button
+            self.navigationItem.rightBarButtonItem = sender;
+
         });
     });
     dispatch_release(fetchQueue);

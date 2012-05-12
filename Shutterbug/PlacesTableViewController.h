@@ -19,7 +19,6 @@
 #define UNKNOWN_STRING          @"Unknown"
 
 
-
 @interface PlacesTableViewController : UITableViewController
 
 

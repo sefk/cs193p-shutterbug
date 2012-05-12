@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define MAX_PHOTOS_FOR_PLACE 50
+
 @interface PhotoListTableViewController : UITableViewController
 
 - (NSArray *) getPhotoListFromHistory:(id)ignorable;
-
 - (NSArray *) getPhotoListFromFlickrForPlace:(NSDictionary *)place;
 
 @end

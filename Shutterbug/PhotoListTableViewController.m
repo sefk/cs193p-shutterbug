@@ -60,7 +60,6 @@
 
 #pragma mark - Data Fetch Methods
 
-
 - (NSArray *) getPhotoListFromHistory:(id)ignorable
 {
     // TODO
@@ -72,7 +71,6 @@
     // TODO
 }
 
-#define MAX_PHOTOS_FOR_PLACE 50
 
 - (NSArray *) getPhotoListFromFlickrForPlace:(NSDictionary *)place
 {

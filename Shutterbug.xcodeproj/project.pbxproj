@@ -24,7 +24,6 @@
 		865DACE6155C8176007D5F59 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE4155C8176007D5F59 /* FlickrFetcher.m */; };
 		865DACE9155C8265007D5F59 /* PlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE8155C8265007D5F59 /* PlacesTableViewController.m */; };
 		865DACEC155C831B007D5F59 /* PhotoHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */; };
-		866A04E6155E2D1900DB2B9E /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 866A04E5155E2D1900DB2B9E /* icon_refresh.png */; };
 		86BEECB7155DB4A6008C2165 /* CountryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BEECB6155DB4A6008C2165 /* CountryList.m */; };
 		86D8C964155DCA9B005C7177 /* PhotoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8C963155DCA9B005C7177 /* PhotoListTableViewController.m */; };
 		86D8C968155DCAEB005C7177 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8C967155DCAEB005C7177 /* PhotoViewController.m */; };
@@ -56,7 +55,6 @@
 		865DACE8155C8265007D5F59 /* PlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesTableViewController.m; sourceTree = "<group>"; };
 		865DACEA155C831B007D5F59 /* PhotoHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHistoryTableViewController.h; sourceTree = "<group>"; };
 		865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHistoryTableViewController.m; sourceTree = "<group>"; };
-		866A04E5155E2D1900DB2B9E /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_refresh.png; sourceTree = "<group>"; };
 		86BEECB5155DB4A6008C2165 /* CountryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryList.h; sourceTree = "<group>"; };
 		86BEECB6155DB4A6008C2165 /* CountryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryList.m; sourceTree = "<group>"; };
 		86D8C962155DCA9B005C7177 /* PhotoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListTableViewController.h; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				865DACD2155C807F007D5F59 /* AppDelegate.h */,
 				8651C937155E2AD600496D96 /* icon_bookmark.png */,
 				8651C935155E2A3D00496D96 /* icon_blog.png */,
-				866A04E5155E2D1900DB2B9E /* icon_refresh.png */,
 				8651C933155E289500496D96 /* GG-Icon-144.png */,
 				8651C931155E289200496D96 /* GG-Icon-72.png */,
 				8651C92F155E288D00496D96 /* GG-Icon-114.png */,
@@ -209,7 +206,6 @@
 				8651C934155E289500496D96 /* GG-Icon-144.png in Resources */,
 				8651C936155E2A3D00496D96 /* icon_blog.png in Resources */,
 				8651C938155E2AD600496D96 /* icon_bookmark.png in Resources */,
-				866A04E6155E2D1900DB2B9E /* icon_refresh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
