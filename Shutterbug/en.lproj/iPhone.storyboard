@@ -103,7 +103,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="HUt-Lg-1Bo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uI6-m2-FJm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uI6-m2-FJm">
+                            <connections>
+                                <action selector="getPhotoList:" destination="Jac-SH-M9J" id="7IA-0a-15Q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="dfz-WQ-aCC" kind="push" identifier="ShowPhoto" id="8sM-sh-1eF"/>
@@ -198,6 +202,17 @@
         <image name="icon_blog.png" width="30" height="30"/>
         <image name="icon_bookmark.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="PhotoListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoListTableViewController.h"/>
+        </class>
+        <class className="PhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
+        </class>
+        <class className="PlacesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
