@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8651C92D155E288A00496D96 /* GG-Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8651C92C155E288A00496D96 /* GG-Icon-57.png */; };
+		8651C930155E288D00496D96 /* GG-Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8651C92F155E288D00496D96 /* GG-Icon-114.png */; };
+		8651C932155E289200496D96 /* GG-Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8651C931155E289200496D96 /* GG-Icon-72.png */; };
+		8651C934155E289500496D96 /* GG-Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8651C933155E289500496D96 /* GG-Icon-144.png */; };
+		8651C936155E2A3D00496D96 /* icon_blog.png in Resources */ = {isa = PBXBuildFile; fileRef = 8651C935155E2A3D00496D96 /* icon_blog.png */; };
+		8651C938155E2AD600496D96 /* icon_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8651C937155E2AD600496D96 /* icon_bookmark.png */; };
 		865DACC4155C807F007D5F59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865DACC3155C807F007D5F59 /* UIKit.framework */; };
 		865DACC6155C807F007D5F59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865DACC5155C807F007D5F59 /* Foundation.framework */; };
 		865DACC8155C807F007D5F59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865DACC7155C807F007D5F59 /* CoreGraphics.framework */; };
@@ -18,12 +24,19 @@
 		865DACE6155C8176007D5F59 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE4155C8176007D5F59 /* FlickrFetcher.m */; };
 		865DACE9155C8265007D5F59 /* PlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACE8155C8265007D5F59 /* PlacesTableViewController.m */; };
 		865DACEC155C831B007D5F59 /* PhotoHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */; };
+		866A04E6155E2D1900DB2B9E /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 866A04E5155E2D1900DB2B9E /* icon_refresh.png */; };
 		86BEECB7155DB4A6008C2165 /* CountryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BEECB6155DB4A6008C2165 /* CountryList.m */; };
 		86D8C964155DCA9B005C7177 /* PhotoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8C963155DCA9B005C7177 /* PhotoListTableViewController.m */; };
 		86D8C968155DCAEB005C7177 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8C967155DCAEB005C7177 /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8651C92C155E288A00496D96 /* GG-Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GG-Icon-57.png"; path = "../GG-Icon-57.png"; sourceTree = "<group>"; };
+		8651C92F155E288D00496D96 /* GG-Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GG-Icon-114.png"; path = "../GG-Icon-114.png"; sourceTree = "<group>"; };
+		8651C931155E289200496D96 /* GG-Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GG-Icon-72.png"; path = "../GG-Icon-72.png"; sourceTree = "<group>"; };
+		8651C933155E289500496D96 /* GG-Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GG-Icon-144.png"; path = "../GG-Icon-144.png"; sourceTree = "<group>"; };
+		8651C935155E2A3D00496D96 /* icon_blog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_blog.png; sourceTree = "<group>"; };
+		8651C937155E2AD600496D96 /* icon_bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bookmark.png; sourceTree = "<group>"; };
 		865DACBF155C807F007D5F59 /* Shutterbug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shutterbug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		865DACC3155C807F007D5F59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		865DACC5155C807F007D5F59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -43,6 +56,7 @@
 		865DACE8155C8265007D5F59 /* PlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesTableViewController.m; sourceTree = "<group>"; };
 		865DACEA155C831B007D5F59 /* PhotoHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHistoryTableViewController.h; sourceTree = "<group>"; };
 		865DACEB155C831B007D5F59 /* PhotoHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHistoryTableViewController.m; sourceTree = "<group>"; };
+		866A04E5155E2D1900DB2B9E /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_refresh.png; sourceTree = "<group>"; };
 		86BEECB5155DB4A6008C2165 /* CountryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryList.h; sourceTree = "<group>"; };
 		86BEECB6155DB4A6008C2165 /* CountryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryList.m; sourceTree = "<group>"; };
 		86D8C962155DCA9B005C7177 /* PhotoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListTableViewController.h; sourceTree = "<group>"; };
@@ -119,6 +133,13 @@
 			isa = PBXGroup;
 			children = (
 				865DACD2155C807F007D5F59 /* AppDelegate.h */,
+				8651C937155E2AD600496D96 /* icon_bookmark.png */,
+				8651C935155E2A3D00496D96 /* icon_blog.png */,
+				866A04E5155E2D1900DB2B9E /* icon_refresh.png */,
+				8651C933155E289500496D96 /* GG-Icon-144.png */,
+				8651C931155E289200496D96 /* GG-Icon-72.png */,
+				8651C92F155E288D00496D96 /* GG-Icon-114.png */,
+				8651C92C155E288A00496D96 /* GG-Icon-57.png */,
 				865DACD3155C807F007D5F59 /* AppDelegate.m */,
 				865DACCB155C807F007D5F59 /* Shutterbug-Info.plist */,
 				865DACCC155C807F007D5F59 /* InfoPlist.strings */,
@@ -182,6 +203,13 @@
 				865DACCE155C807F007D5F59 /* InfoPlist.strings in Resources */,
 				865DACD7155C807F007D5F59 /* iPhone.storyboard in Resources */,
 				865DACDA155C807F007D5F59 /* iPad.storyboard in Resources */,
+				8651C92D155E288A00496D96 /* GG-Icon-57.png in Resources */,
+				8651C930155E288D00496D96 /* GG-Icon-114.png in Resources */,
+				8651C932155E289200496D96 /* GG-Icon-72.png in Resources */,
+				8651C934155E289500496D96 /* GG-Icon-144.png in Resources */,
+				8651C936155E2A3D00496D96 /* icon_blog.png in Resources */,
+				8651C938155E2AD600496D96 /* icon_bookmark.png in Resources */,
+				866A04E6155E2D1900DB2B9E /* icon_refresh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
