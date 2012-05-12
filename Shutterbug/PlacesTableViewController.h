@@ -22,5 +22,4 @@
 @interface PlacesTableViewController : UITableViewController
 
 
-
 @end

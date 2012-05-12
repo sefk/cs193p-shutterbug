@@ -12,7 +12,6 @@
 
 @interface PhotoListTableViewController : UITableViewController
 
-- (NSArray *) getPhotoListFromHistory:(id)ignorable;
-- (NSArray *) getPhotoListFromFlickrForPlace:(NSDictionary *)place;
+@property (nonatomic, strong) NSDictionary * location;
 
 @end

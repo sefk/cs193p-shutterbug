@@ -9,6 +9,7 @@
 #import "PlacesTableViewController.h"
 #import "FlickrFetcher.h"
 #import "CountryList.h"
+#import "PhotoListTableViewController.h"
 
 @interface PlacesTableViewController ()
 
@@ -203,6 +204,9 @@
 {
     static NSString *CellIdentifier = @"CityCellPrototype";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
         
     CountryList * thisCountry = [self.placesList objectAtIndex:indexPath.section];
     NSArray * cityList = thisCountry.cities;
@@ -216,9 +220,21 @@
 
 #pragma mark - Table view delegate
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowPhotoList"]) {
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        CountryList *country = [self.placesList objectAtIndex:path.section];
+        NSDictionary *city = [country.cities objectAtIndex:path.row];
+        PhotoListTableViewController * destVC = segue.destinationViewController;
+        destVC.location = city;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    [self performSegueWithIdentifier:@"ShowPhotoList" sender:self];
 }
 
 

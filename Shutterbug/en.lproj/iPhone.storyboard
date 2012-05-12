@@ -6,26 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
-        <!--Photo History Table View Controller - Your Viewing History-->
-        <scene sceneID="3tS-qj-ahX">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1mE-h2-zOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Mbi-Zm-ppW" customClass="PhotoHistoryTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hnE-QA-W7N">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Your Viewing History" id="owV-TP-6dA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="KRn-xH-TdN"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="view" destination="hnE-QA-W7N" id="4GI-bV-WxL"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="956" y="365"/>
-        </scene>
         <!--Places Table View Controller - Top Places-->
         <scene sceneID="eX2-IP-4RZ">
             <objects>
@@ -122,7 +102,9 @@
                             <outlet property="delegate" destination="Jac-SH-M9J" id="5DL-CA-bKk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HUt-Lg-1Bo"/>
+                    <navigationItem key="navigationItem" id="HUt-Lg-1Bo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uI6-m2-FJm"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="dfz-WQ-aCC" kind="push" identifier="ShowPhoto" id="8sM-sh-1eF"/>
                     </connections>
@@ -205,7 +187,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Mbi-Zm-ppW" kind="relationship" relationship="rootViewController" id="XLb-xd-Rqg"/>
+                        <segue destination="Jac-SH-M9J" kind="relationship" relationship="rootViewController" id="Iu8-v8-pcO"/>
                     </connections>
                 </navigationController>
             </objects>
@@ -216,23 +198,12 @@
         <image name="icon_blog.png" width="30" height="30"/>
         <image name="icon_bookmark.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="PhotoHistoryTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoHistoryTableViewController.h"/>
-        </class>
-        <class className="PhotoListTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoListTableViewController.h"/>
-        </class>
-        <class className="PhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
-        </class>
-        <class className="PlacesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Iu8-v8-pcO"/>
+    </inferredMetricsTieBreakers>
 </document>
