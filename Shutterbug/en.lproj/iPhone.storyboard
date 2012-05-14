@@ -122,19 +122,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlg-1q-E14" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="dfz-WQ-aCC" customClass="PhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UOa-MQ-yzv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="re4-Uh-ew9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="lXf-8P-mev">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" id="J4i-hx-tMH">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dfz-WQ-aCC" id="fYi-uT-2uH"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="CZS-Vf-hHd"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="view" destination="re4-Uh-ew9" id="Qab-bp-TiY"/>
+                        <outlet property="imageView" destination="J4i-hx-tMH" id="qeE-w1-11w"/>
+                        <outlet property="scrollView" destination="lXf-8P-mev" id="NZZ-mR-Mde"/>
+                        <outlet property="view" destination="UOa-MQ-yzv" id="6P2-OH-ULD"/>
                     </connections>
                 </viewController>
             </objects>
@@ -208,6 +221,10 @@
         </class>
         <class className="PhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
         </class>
         <class className="PlacesTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
