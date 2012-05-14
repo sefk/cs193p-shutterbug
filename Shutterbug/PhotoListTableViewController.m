@@ -9,6 +9,7 @@
 #import "PhotoListTableViewController.h"
 #import "FlickrFetcher.h"
 #import "PlacesTableViewController.h"
+#import "PhotoViewController.h"
 
 
 @interface PhotoListTableViewController ()
@@ -145,7 +146,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO
+    [self performSegueWithIdentifier:@"ShowPhoto" sender:self];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowPhoto"]) {
+        PhotoViewController * destVC = segue.destinationViewController;
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        destVC.photoInfo = [self.photoList objectAtIndex:path.row];
+    }
 }
 
 @end

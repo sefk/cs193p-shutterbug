@@ -10,4 +10,7 @@
 
 @interface PhotoViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary * photoInfo;
+
+
 @end
