@@ -12,7 +12,7 @@
 #import "PhotoViewController.h"
 
 
-@interface PhotoListTableViewController ()
+@interface PhotoListTableViewController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSArray * photoList;
 
@@ -50,15 +50,27 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    [self refreshPhotoList]; 
-}
+    // The button in the upper right varies by the type of view, so let's get that
+    // set up first
+    if (self.location) {
+        // photo list case -- refresh button, a system style
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                       initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                       target:self
+                       action:@selector(refreshPhotoList:)];
+    } else {
+        // photo history case -- clear all button, text
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                      initWithTitle:@"Clear All"
+                      style:UIBarButtonItemStylePlain
+                      target:self
+                      action:@selector(photoHistoryClearAll:)];
+    }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
+    // Actually go out and fill up the view
+    [self refreshPhotoList:self]; 
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -69,16 +81,16 @@
          
 #pragma mark - Data Fetch Methods
 
-- (IBAction) refreshPhotoList
+- (IBAction) refreshPhotoList:(id)sender
 {
     if (self.location) {
-        // if location set (presumably from prepareForSegue then get photos
+        // if location set (presumably from prepareForSegue) then get photos
         // for that spot
         [self getPhotoListForLocation:self.location];
         self.navigationItem.title = [self.location objectForKey:FLICKR_DICT_KEY_CITY];
     } else {
         // no location set, just display the photo history
-        [self getPhotoListFromHistory];
+        [self getPhotoHistory];
         self.navigationItem.title = @"History";
     }
 }
@@ -86,7 +98,7 @@
 - (void) getPhotoListForLocation:(NSDictionary *)place;
 {
     // replace refresh button with spinner
-    UIBarButtonItem * saveRefreshButton = self.navigationItem.rightBarButtonItem;
+    UIBarButtonItem * saveTopRightButton = self.navigationItem.rightBarButtonItem;
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     UIBarButtonItem * spinnerButton = [[UIBarButtonItem alloc] initWithCustomView:spinner];
@@ -97,25 +109,19 @@
         NSArray * newPhotos = [FlickrFetcher photosInPlace:place maxResults:MAX_PHOTOS_FOR_PLACE];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.photoList = newPhotos;
-            self.navigationItem.rightBarButtonItem = saveRefreshButton;
+            self.navigationItem.rightBarButtonItem = saveTopRightButton;
         });
     });
     dispatch_release(fetchQueue);
 }
 
-
-// This is quick enough that we don't need to bother with putting in another thread
-- (void) getPhotoListFromHistory
+- (IBAction) photoHistoryClearAll:(id)sender
 {
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    assert(defaults);
-    NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
-    if (existingHistory == nil) {
-        self.photoList = [[NSMutableArray alloc] init];
-    } else {
-        self.photoList = existingHistory;
-    }
+    [self clearPhotoHistory];
+    [self getPhotoHistory];
+    [self.tableView reloadData];
 }
+
 
 
 #pragma mark - Table view data source
@@ -149,29 +155,74 @@
     return cell;
 }
 
+
+#pragma mark - dealing with history
+
+- (void) addPhotoToTopOfHistory:(NSDictionary *)photoToAdd
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    assert(defaults);
+    NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
+    NSMutableArray * newHistory;
+    if (existingHistory == nil) {
+        newHistory = [[NSMutableArray alloc] init];
+    } else {
+        newHistory = [existingHistory mutableCopy];
+    }
+    [newHistory insertObject:photoToAdd atIndex:0];    // most recent at the top
+    [defaults setObject:newHistory forKey:NSUSERDEFAULTS_KEY_HISTORY];
+    [defaults synchronize];   
+}
+
+- (void) removePhotoHistoryItemAtPosition:(NSInteger)pos
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    assert(defaults);
+    NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
+    NSMutableArray * newHistory = [existingHistory mutableCopy];
+    [newHistory removeObjectAtIndex:pos];
+    [defaults setObject:newHistory forKey:NSUSERDEFAULTS_KEY_HISTORY];
+    [defaults synchronize];   
+}
+
+// This is quick enough that we don't need to bother with putting in another thread
+- (void) getPhotoHistory
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    assert(defaults);
+    NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
+    if (existingHistory == nil) {
+        self.photoList = [[NSMutableArray alloc] init];
+    } else {
+        self.photoList = existingHistory;
+    }
+}
+
+- (void) clearPhotoHistory
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    assert(defaults);
+    [defaults removeObjectForKey:NSUSERDEFAULTS_KEY_HISTORY];
+    [defaults synchronize];
+}
+
+                                                  
+                                                  
+                
+
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.location) {
-        // Add to History
-        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        assert(defaults);
-        NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
-        NSMutableArray * newHistory;
-        if (existingHistory == nil) {
-            newHistory = [[NSMutableArray alloc] init];
-        } else {
-            newHistory = [existingHistory mutableCopy];
-        }
+        // if location is set then I'm a photo list viewer, not a history viewer
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        [newHistory insertObject:[self.photoList objectAtIndex:path.row] 
-                         atIndex:0];    // most recent at the top
-        [defaults setObject:newHistory forKey:NSUSERDEFAULTS_KEY_HISTORY];
-        [defaults synchronize];
+        NSDictionary *selectedPhoto = [self.photoList objectAtIndex:path.row];
+        [self addPhotoToTopOfHistory:selectedPhoto];
     }
     
-    // Segue
+    // Now do segue to bring up the photo viewer itself
     [self performSegueWithIdentifier:@"ShowPhoto" sender:self];
 }
 
@@ -183,5 +234,19 @@
         destVC.photoInfo = [self.photoList objectAtIndex:path.row];
     }
 }
+
+
+#pragma mark - Table Editing
+
+// Override to support editing the table view.
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self removePhotoHistoryItemAtPosition:[indexPath indexAtPosition:0]];
+        [self getPhotoHistory];  // better as a [self.tableView reloadData] ? coudn't get working
+    }    
+}
+
+
 
 @end

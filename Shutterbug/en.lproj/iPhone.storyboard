@@ -102,13 +102,7 @@
                             <outlet property="delegate" destination="Jac-SH-M9J" id="5DL-CA-bKk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HUt-Lg-1Bo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="3MV-dg-pXO">
-                            <connections>
-                                <action selector="refreshPhotoList:" destination="Jac-SH-M9J" id="rC9-dC-exJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="HUt-Lg-1Bo"/>
                     <connections>
                         <segue destination="dfz-WQ-aCC" kind="push" identifier="ShowPhoto" id="8sM-sh-1eF"/>
                     </connections>
@@ -214,27 +208,12 @@
         <image name="icon_blog.png" width="30" height="30"/>
         <image name="icon_bookmark.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="PhotoListTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoListTableViewController.h"/>
-        </class>
-        <class className="PhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="PlacesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Iu8-v8-pcO"/>
+        <segue reference="SuH-n2-9Ya"/>
     </inferredMetricsTieBreakers>
 </document>
