@@ -165,7 +165,8 @@
             newHistory = [existingHistory mutableCopy];
         }
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        [newHistory addObject:[self.photoList objectAtIndex:path.row]];
+        [newHistory insertObject:[self.photoList objectAtIndex:path.row] 
+                         atIndex:0];    // most recent at the top
         [defaults setObject:newHistory forKey:NSUSERDEFAULTS_KEY_HISTORY];
         [defaults synchronize];
     }
