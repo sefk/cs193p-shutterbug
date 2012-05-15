@@ -20,7 +20,6 @@
 
 
 
-
 @implementation PlacesTableViewController
 
 @synthesize placesList = _placesList;
@@ -36,8 +35,6 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-    }
     return self;
 }
 
@@ -52,14 +49,6 @@
     [self getTopPlaces:self.navigationItem.rightBarButtonItem];    // populate view w/ data from Flickr
 }
 
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
@@ -67,7 +56,6 @@
 
 
 #pragma mark - Get Data For View
-
 
 + (NSArray *)parseAndSortFlickrPlaces:(NSArray *)fromFlickr
 {
@@ -146,7 +134,6 @@
 }
 
 
-
 - (IBAction)getTopPlaces:(id)sender
 {
     // replace refresh button with spinner
@@ -193,7 +180,6 @@
     return [[self.placesList objectAtIndex:section] countryName];
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     CountryList * thisCountry = [self.placesList objectAtIndex:section];
@@ -220,7 +206,6 @@
 
 #pragma mark - Table view delegate
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowPhotoList"]) {
@@ -236,7 +221,6 @@
 {
     [self performSegueWithIdentifier:@"ShowPhotoList" sender:self];
 }
-
 
 
 @end
