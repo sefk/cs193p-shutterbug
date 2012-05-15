@@ -39,24 +39,19 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // ANYTHING?
+        // this space intentionally left blank
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    // Do the load here since we only want to load the picture when the view is first 
+    // constructed.  Originally I had put in viewWillAppear: but then it got reloaded
+    // when switching between tabs, wich was both bad jarring UI (reset zooms and such)
+    // and also caused some weird bugs when re-loading a scrollview.
     [self loadPhoto];
 }
-
-/*
-- (void)viewWillAppear:(BOOL)animated
-{
-    // since this is potentially expensive, wait until the last minute to
-    // kick off the call.  Maybe not visible, not needed?
-    [self loadPhoto];
-}
- */
 
 - (void)viewDidUnload
 {
