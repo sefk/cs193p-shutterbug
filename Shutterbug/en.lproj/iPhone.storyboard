@@ -103,9 +103,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="HUt-Lg-1Bo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uI6-m2-FJm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="3MV-dg-pXO">
                             <connections>
-                                <action selector="getPhotoList:" destination="Jac-SH-M9J" id="7IA-0a-15Q"/>
+                                <action selector="refreshPhotoList:" destination="Jac-SH-M9J" id="rC9-dC-exJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

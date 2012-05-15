@@ -105,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				865DACD5155C807F007D5F59 /* iPhone.storyboard */,
+				865DACD8155C807F007D5F59 /* iPad.storyboard */,
 				865DACE7155C8265007D5F59 /* PlacesTableViewController.h */,
 				865DACE8155C8265007D5F59 /* PlacesTableViewController.m */,
 				86D8C962155DCA9B005C7177 /* PhotoListTableViewController.h */,
@@ -113,7 +114,6 @@
 				86BEECB6155DB4A6008C2165 /* CountryList.m */,
 				86D8C966155DCAEB005C7177 /* PhotoViewController.h */,
 				86D8C967155DCAEB005C7177 /* PhotoViewController.m */,
-				865DACD8155C807F007D5F59 /* iPad.storyboard */,
 				866A04F4155E4C7000DB2B9E /* Flickr */,
 				865DACCA155C807F007D5F59 /* Supporting Files */,
 			);

@@ -36,11 +36,9 @@
 {
     if (_location != newLocation) {
         _location = newLocation;
-        self.navigationItem.title = [newLocation objectForKey:FLICKR_DICT_KEY_CITY];
         [self.tableView reloadData];
     }
 }
-
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -55,7 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self getPhotoList:self.navigationItem.rightBarButtonItem];
+    [self refreshPhotoList]; 
 }
 
 - (void)viewDidUnload
@@ -68,16 +66,24 @@
     return YES;
 }
 
-
+         
 #pragma mark - Data Fetch Methods
 
-- (NSArray *) getPhotoListFromHistory:(id)ignorable
+- (IBAction) refreshPhotoList
 {
-    // TODO
+    if (self.location) {
+        // if location set (presumably from prepareForSegue then get photos
+        // for that spot
+        [self getPhotoListForLocation:self.location];
+        self.navigationItem.title = [self.location objectForKey:FLICKR_DICT_KEY_CITY];
+    } else {
+        // no location set, just display the photo history
+        [self getPhotoListFromHistory];
+        self.navigationItem.title = @"History";
+    }
 }
 
-
-- (void) getPhotoListFromFlickr:(NSDictionary *)place;
+- (void) getPhotoListForLocation:(NSDictionary *)place;
 {
     // replace refresh button with spinner
     UIBarButtonItem * saveRefreshButton = self.navigationItem.rightBarButtonItem;
@@ -98,17 +104,18 @@
 }
 
 
-- (IBAction) getPhotoList:(id)sender
+// This is quick enough that we don't need to bother with putting in another thread
+- (void) getPhotoListFromHistory
 {
-    if (self.location == nil) {
-        // no location set, get history
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    assert(defaults);
+    NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
+    if (existingHistory == nil) {
+        self.photoList = [[NSMutableArray alloc] init];
     } else {
-        // location set, use it
-        [self getPhotoListFromFlickr:self.location];
+        self.photoList = existingHistory;
     }
 }
-
-
 
 
 #pragma mark - Table view data source
@@ -146,6 +153,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.location) {
+        // Add to History
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        assert(defaults);
+        NSArray * existingHistory = [defaults arrayForKey:NSUSERDEFAULTS_KEY_HISTORY];
+        NSMutableArray * newHistory;
+        if (existingHistory == nil) {
+            newHistory = [[NSMutableArray alloc] init];
+        } else {
+            newHistory = [existingHistory mutableCopy];
+        }
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        [newHistory addObject:[self.photoList objectAtIndex:path.row]];
+        [defaults setObject:newHistory forKey:NSUSERDEFAULTS_KEY_HISTORY];
+        [defaults synchronize];
+    }
+    
+    // Segue
     [self performSegueWithIdentifier:@"ShowPhoto" sender:self];
 }
 

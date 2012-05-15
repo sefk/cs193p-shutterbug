@@ -10,8 +10,8 @@
 #import "FlickrFetcher.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @end
 
 
