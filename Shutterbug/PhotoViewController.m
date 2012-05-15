@@ -44,12 +44,19 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [self loadPhoto];
+}
+
+/*
 - (void)viewWillAppear:(BOOL)animated
 {
     // since this is potentially expensive, wait until the last minute to
     // kick off the call.  Maybe not visible, not needed?
     [self loadPhoto];
 }
+ */
 
 - (void)viewDidUnload
 {
@@ -82,6 +89,7 @@
         NSData * photoData = [NSData dataWithContentsOfURL:photoURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = [UIImage imageWithData:photoData]; 
+            self.scrollView.zoomScale = 1;
             self.scrollView.contentSize = self.imageView.image.size;
             self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
             float xzoom = (scrollView.bounds.size.width / self.imageView.image.size.width);
